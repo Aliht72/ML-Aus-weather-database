@@ -1,0 +1,35 @@
+walt <- read.csv(file="/Users/ali/Desktop/The Walt Disney Companystock.csv",row.names="Date")
+x<- as.Date(walt2$Date)
+head(x)
+day <- as.numeric(format(x,"%Y"))
+head(day)
+month<-as.numeric(format(x,"%m"))
+head(month)
+year <-as.numeric(format(x,"%d"))
+head(year)
+walt2 <- cbind(walt2, day, month, year)
+head(walt2)
+plot(walt2$year, walt2$Volume, type="1" ,xlab="year", ylab="Volume")
+#split the data to Year Month and Day
+Y <- ts(walt2$Open,start = c(2001, 2), frequency=12) 
+autoplot(Y) + ggtitle("Time Plot of market of Walt Disney Company in Stock") + ylab("Volume in dollar")
+DY<-diff(Y)
+autoplot(DY)+ ggtitle("Time Plot of Volume market of Walt Disney Company in Stock") + ylab("Volume in dollar")
+ggseasonplot(DY) + ggtitle("Seasonal Plot: change in Walt Disny change") + ylab("Volume in dollar")
+fit <- snaive(DY)
+print(summary(fit))
+checkresiduals(fit)
+
+fit_ets <- ets(Y)
+print(summary(fit_ets))
+checkresiduals(fit_ets)
+
+
+fit_arima <- auto.arima(Y, d=1 , D=1,stepwise = FALSE, approximation = FALSE, trace=TRUE)
+print(summary(fit_arima))
+checkresiduals(fit_arima)
+
+
+fcst<- forecast(fit_arima,h=24)
+autoplot(fcst, include = 60)
+print(summary(fcst))
