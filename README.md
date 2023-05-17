@@ -1,6 +1,6 @@
 # Data Mining Project
 
-This repository contains code and data for a data mining project completed by Ali Hosseini as part of Data mining. The project aims to [briefly describe the project goal or objective].
+This repository contains code and data for a data mining project completed by Ali Hosseini as part of Data mining. The project aims to This project focuses on using Data Mining techniques to build a weather prediction model for Australia. Weather forecasting has been a challenging problem worldwide due to its numerous applications, including agriculture, water resources, and human activities. The project aims to recognize the methods suitable for predicting tomorrow's weather, focusing on whether it will rain or not. The dataset contains ten years of daily weather observations from forty-nine of the biggest cities across Australia, including 23 variables and over 145,000 rows.
 
 ## Data
 
